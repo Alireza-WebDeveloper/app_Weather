@@ -1,0 +1,23 @@
+{
+  "name": "Weather_Api",
+  "version": "1.0.0",
+  "description": "",
+  "default": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir dist"
+  },
+  "keywords": [],
+  "author": "Alireza",
+  "license": "ISC",
+  "dependencies": {
+    "@popperjs/core": "^2.11.5",
+    "bootstrap": "^5.2.0",
+    "core-js": "^3.23.5",
+    "regenerator-runtime": "^0.13.9",
+    "transformer-js": "0.0.9"
+  },
+  "devDependencies": {
+    "parcel": "^2.6.2"
+  }
+}

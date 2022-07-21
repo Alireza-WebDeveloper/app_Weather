@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: rgb(0, 0, 0);
+  --color1: white;
+  --color2: black;
+}
+
+/* Fonts  */
+@font-face {
+  font-family: Cinzel;
+  src: url(/src/css/font/Cinzel/Cinzel-Medium.ttf);
+}
+@font-face {
+  font-family: NotoSansDisplay;
+  src: url(/src/css/font/Noto_Sans_Display/NotoSansDisplay-BlackItalic.ttf);
+}
+
+.container-fluid {
+  height: 100vh;
+  background-color: var(--bg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+#custom_Weather,
+#weather-Loading {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Weather Form */
+#weather_Form #weather_ButtonSerch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+}
+.is-invalid ~ #weather_ButtonSerch {
+  height: 65% !important;
+}
+#weather_Form .invalid-feedback {
+  font-family: Cinzel, Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+}
+
+#weather_ButtonSerch .fa {
+  font-size: 1.3rem;
+}
+#weather_ButtonSerch:hover .fa {
+  animation: magnifier 0.9s linear alternate infinite;
+}
+
+#weather_Form #input_QuerySearch {
+  font-family: NotoSansDisplay, Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+}
+#weather_Form #input_QuerySearch::placeholder {
+  color: var(--color2);
+  text-transform: capitalize;
+  font-family: Cinzel;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+/* Weatehr Information */
+.custom_Weather_City,
+.custom_Weather_Temp,
+.custom_Weather_Description,
+.custom_Weather_Humidity,
+.custom_Weather_Speed {
+  font-family: Cinzel, Arial, Helvetica, sans-serif;
+}
+
+.custom_Weather_City {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+.custom_Weather_Temp {
+  font-size: 2.6rem;
+}
+.custom_Weather_Description,
+.custom_Weather_Humidity,
+.custom_Weather_Speed {
+  font-size: 1.3rem;
+}
+
+.custom_Weather_Description .custom_Weather_Description-Img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+/* Animation  */
+@keyframes magnifier {
+  to {
+    font-size: 1.6rem;
+  }
+}
+/* Media Query */
+@media (max-width: 578px) and (pointer: coarse) {
+  .is-invalid ~ #weather_ButtonSerch {
+    height: 43% !important;
+  }
+}
+
+/* Error Message */
+.Error_Message {
+  font-size: 1.5rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+}
