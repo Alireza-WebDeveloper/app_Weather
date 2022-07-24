@@ -4,6 +4,7 @@ import View from './View';
 class FormSearchCity extends View {
   _parElement = document.querySelector('#weather_Form');
   _Regex = /^([a-zA-Z]+(\ ?)+)+$/;
+  _RegexLocation = /^\?city=[a-zA-Z]+$/;
   constructor() {
     super();
   }
@@ -22,10 +23,27 @@ class FormSearchCity extends View {
     <span class='invalid-feedback text-danger text-capitalize fw-bold'>Input characters must be letter type</span>
   </div>`;
   }
+  // Render Form
   _windowLoading(handler) {
     window.addEventListener('load', function () {
       handler();
     });
+  }
+  // Get SearchParam When Load Page
+  _addHandlerSendFormLoadingPage(handler) {
+    window.addEventListener('load', loadPage.bind(this));
+    function loadPage() {
+      const newUrl = new URL(document.URL);
+      const searchParam = newUrl.search;
+      const city = newUrl.searchParams.get('city');
+      if (this._RegexLocation.test(searchParam)) handler(city);
+    }
+  }
+  // Set SearchParam When Send Form
+  __SetSearchLoadingPage(city) {
+    const newUrl = new URL(location.href);
+    newUrl.searchParams.set('city', city);
+    history.replaceState({ city }, '', `${newUrl.href}`);
   }
   _addHandlerSendForm(handler) {
     this._parElement.addEventListener('submit', sendForm.bind(this));
@@ -34,7 +52,10 @@ class FormSearchCity extends View {
       const data = Object.fromEntries([...new FormData(e.currentTarget)]);
       const { city } = data;
       const validation = this._checkValidationCity(city);
-      if (validation) handler(city);
+      if (validation) {
+        this.__SetSearchLoadingPage(city);
+        handler(city);
+      }
       this._clearForm();
     }
   }

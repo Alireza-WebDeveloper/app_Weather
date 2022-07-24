@@ -24,4 +24,5 @@ const controllerSendCity = async function (city) {
 (function () {
   FormSearchCity._windowLoading(controllerFormSearchView);
   FormSearchCity._addHandlerSendForm(controllerSendCity);
+  FormSearchCity._addHandlerSendFormLoadingPage(controllerSendCity);
 })();
